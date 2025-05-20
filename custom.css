@@ -1,0 +1,207 @@
+body {
+    font-size: 16px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #384047;
+}
+
+#life {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    min-height: 100vh;
+}
+
+#life::before {
+    content: "LandingPlace Timeline";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 72px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+#life-years {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    min-height: 100vh;
+}
+
+#life-years .year {
+    display: inline-block;
+    width: 600px;
+    height: 100%;
+    border-left: 2px dashed rgba(255, 255, 255, .2);
+    position: relative;
+    min-height: 100vh;
+}
+
+#life-years .year span {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 25px;
+    background: rgba(56, 64, 71, 0.95);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: normal;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+#life-years .year span::before {
+    content: "Week ";
+    font-weight: normal;
+}
+
+#life-events {
+    padding-top: 80px;
+    position: relative;
+    min-height: calc(100vh - 80px);
+}
+
+#life .event {
+    padding: 15px 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    line-height: 1.5;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin-left: 2px;
+}
+
+#life .event .time {
+    border-width: 12px;
+    border-radius: 8px;
+    opacity: 0.8;
+    margin-right: 15px;
+    min-width: 24px;
+    position: relative;
+    left: -2px;
+}
+
+#life .event.dot {
+    position: relative;
+    padding-left: 30px;
+}
+
+#life .event.dot::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: #64B5F6;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(100, 181, 246, 0.3);
+}
+
+#life .event.dot.recurring::before {
+    background: #9575CD;
+    box-shadow: 0 0 0 4px rgba(149, 117, 205, 0.3);
+}
+
+#life .event b {
+    background: rgba(56, 64, 71, 0.95);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 10px 25px;
+    border-radius: 6px;
+    margin-right: 15px;
+    font-weight: 500;
+    min-width: 30px;
+    text-align: center;
+}
+
+#life .event span {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    flex: 1;
+}
+
+/* Bar colors */
+#life .event:not(.dot):nth-of-type(2) .time,
+#life .event:not(.dot):nth-of-type(3) .time {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+#life .event:not(.dot):nth-of-type(4) .time,
+#life .event:not(.dot):nth-of-type(5) .time {
+    background: #FFD700;
+    border-color: #FFD700;
+}
+
+#life .event:not(.dot):nth-of-type(6) .time {
+    background: #FF4444;
+    border-color: #FF4444;
+}
+
+/* Event types */
+#life .event:nth-of-type(2) .time,
+#life .event:nth-of-type(3) .time {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+#life .event:nth-of-type(4) .time,
+#life .event:nth-of-type(5) .time {
+    background: #FFD700;
+    border-color: #FFD700;
+}
+
+#life .event:nth-of-type(6) .time {
+    background: #FF4444;
+    border-color: #FF4444;
+}
+
+/* Dot events */
+#life .event span:contains('[•]') {
+    position: relative;
+    padding-left: 35px;
+}
+
+#life .event span:contains('[•]')::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: #64B5F6;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(100, 181, 246, 0.3);
+}
+
+#life .event span:contains('(recurring)')::before {
+    background: #9575CD;
+    box-shadow: 0 0 0 4px rgba(149, 117, 205, 0.3);
+}
+
+/* Hover effect */
+#life .event:hover .time {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
